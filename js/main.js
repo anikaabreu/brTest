@@ -123,29 +123,6 @@ var songView = new SongView({
  songView.render()
 
 
-var crV = Backbone.View.extend({
-	tagName: "li",
-	
-	render: function () {
-		// console.log(this.model)
-		// just render the repo name and description as the content of this element.
-		$(this.el).html(
-			'<b>' + this.model.get("cruise_line_id") + "</b> - "
-		);
-
-		return this;
-	}
-});
-
-
-
-
-
-
-
-
-
-
 
 var carCollectionInstance = new CardCollection();
 
@@ -167,7 +144,7 @@ var RepoView = Backbone.View.extend({
 carCollectionInstance.fetch({
 	success: function (response, xhr) {
 		// console.log("Inside success");
-	//  console.log(response);
+	  console.log(response);
 
 	},
 	error: function (errorResponse) {
