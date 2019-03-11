@@ -78,8 +78,8 @@ var CardCollection = Backbone.Collection.extend({
 
 	initialize: function () {
 		
-		this.bind("reset", function (model, options) {
-			
+		this.bind("change", function (model, options) {
+			this.parse();
 		});
 	},
 	//Parse the response
@@ -94,12 +94,12 @@ var CardCollection = Backbone.Collection.extend({
 
 });
 
-
+var CardCollectionInstance = new CardCollection();
 
 var SongView = Backbone.View.extend({
 	tagName: "div",
 	initialize: function(){
-		this.listenTo(this.model, "change", this.render);
+		this.listenTo(CardCollectionInstance, "reset", this.render);
 	},
 
 	render: function () {
@@ -124,7 +124,7 @@ var songView = new SongView({
 
 
 
-var carCollectionInstance = new CardCollection();
+
 
 var RepoView = Backbone.View.extend({
 	tagName: "li",
@@ -141,7 +141,7 @@ var RepoView = Backbone.View.extend({
 	}
 });
 
-carCollectionInstance.fetch({
+CardCollectionInstance.fetch({
 	success: function (response, xhr) {
 		// console.log("Inside success");
 	  console.log(response);
@@ -172,10 +172,10 @@ var CruiseView = Backbone.View.extend({
 
 })
 
-var assemblyReposView = new CruiseView({
-	collection: carCollectionInstance,
-	model: cruiseObj
-});
+// var assemblyReposView = new CruiseView({
+// 	collection: carCollectionInstance,
+// 	model: cruiseObj
+// });
 
 // var Vehicle = Backbone.Model.extend({
 
