@@ -1,3 +1,36 @@
+    // for (key in response) {
+    //     var r = response[key]
+
+    //     for (i = 0; i < r.length; i++) {
+    //         // console.log(r[i], i)
+    //         var cruise = new self.model();
+    //         var settings = _.extend(r[i], r[i]);
+    //         console.log(settings)
+    //         switch (i) {
+    //             case 0:
+
+
+    //                 cruise.set('_id', "cruise" + i);
+    //                 // cruise.set(obj1)
+    //                 // console.log(r[i]);
+    //                 // case '1':
+    //                 //     cruise.set('_id', "cruise" + i);
+    //                 //     cruise.set(r[i])
+    //                 //         // console.log(r[i]);
+    //                 // case '2':
+    //                 //     cruise.set('_id', "cruise" + i);
+    //                 //     cruise.set(r[i])
+    //                 //         // console.log(r[i]);
+    //                 //     break;
+    //         }
+    //         self.push(cruise);
+    //     }
+
+
+    // }
+
+
+
     // switch (i) {
     //     case '0':
     //         at0.set(r[i], key);

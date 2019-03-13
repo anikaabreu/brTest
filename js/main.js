@@ -118,27 +118,43 @@ var ACardCollection = Backbone.Collection.extend({
 
     initialize: function() {
         this.bind("reset", function(model, options) {
-            this.parse();
+            // this.parse();
         });
+    },
+    modelId: function() {
+        return '_id';
     },
     parse: function(response) {
         var y = 0;
         var self = this;
 
-        for (key in response) {
-            var r = response[key];
-            // console.log(r)
-            for (i in r) {
-                y++;
-                var cruise = new self.model();
-                cruise.set('_id', "cruise" + y);
-                cruise.set(r[i])
-                self.push(cruise);
+        for (i = 0; i < response.cruise_lines.length; i++) {
+            var cruise = new self.model();
+            var attrs = Object.assign(response.sailings[i], response.cruise_lines[i]);
 
-            }
+            cruise.set('_id', "cruise" + i);
+            cruise.set(attrs)
+            self.push(cruise);
         }
-        // console.log(this);
+
+        console.log(this);
         return this.models;
+    }
+});
+
+var RepoView = Backbone.View.extend({
+    tagName: "li",
+    className: "repo",
+
+    render: function() {
+
+        // just render the repo name and description as the content of this element.
+        $(this.el).html(
+            '<b>' + this.model.get("sailing_name") + "</b> - " + this.model.get("cruise_line_name")
+
+        );
+
+        return this;
     }
 });
 
@@ -146,20 +162,35 @@ var BaseCardView = Backbone.View.extend({
     tagName: "div",
     template: Handlebars.compile($("#base-card-attr").html()),
     initialize: function() {
-        this.collection = new ACardCollection();
         this.listenTo(this.collection, 'reset change', this.render);
         var self = this;
         this.collection.fetch({
             reset: true,
             success: function() {
-                console.log(self.collection.where({ _id: 'cruise0' }))
+                // console.log(self.collection)
+                // console.log(self.collection.where({ _id: 'cruise0' }))
             }
         });
     },
     render: function() {
         var self = this;
-        console.log(self.get(1))
-            // this.$el.append(this.template({ img: bannerPrice }));
+
+        self.collection.each(function(repo) {
+            var repoView = new RepoView({
+                model: repo
+            });
+            $(this.el).prepend(repoView.render().el);
+
+            // this.$el.append(this.template({ img: repoView.toJSON() }));
+        }, this);
+
+
+        // console.log(self.collection.get('e.Model'))
+        // $(this.el).html(
+        //     // '<b>' + self.collection.get("name") + "</b> - " 
+        // );
+
+        return this;
     }
 })
 
@@ -167,5 +198,6 @@ var c2 = new ACardCollection();
 
 var BaseCardViews = new BaseCardView({
     el: "#container",
+    collection: c2
 
 });
