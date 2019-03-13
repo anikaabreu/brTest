@@ -1,6 +1,82 @@
-
 body {
-	padding: 40px;
+    padding: 40px;
 }
 
-body, p { font-size: 24px; }
+body,
+p {
+    font-size: 24px;
+}
+
+
+/*RIBBON////////////////////////////////////////*/
+
+#container-bod-ribbon-container {
+    color: black;
+    position: absolute;
+    top: 34px;
+    right: -16px;
+    font-size: 18px;
+    z-index: 100;
+    line-height: 6px;
+}
+
+#container-bod-ribbon-container:before {
+    content: "";
+    height: 0;
+    width: 0;
+    display: block;
+    position: absolute;
+    top: 3px;
+    left: 0;
+}
+
+#container-bod-ribbon-container:after {
+    content: "";
+    height: 3px;
+    display: block;
+    position: absolute;
+    bottom: -3px;
+    left: 58px;
+    right: 3px;
+}
+
+#container-bod-ribbon-container div {
+    display: block;
+    padding: 20px;
+    position: relative;
+    background: #ff9900;
+    overflow: visible;
+    height: 35px;
+    color: black;
+    text-decoration: none;
+    font-family: inherit;
+}
+
+#container-bod-ribbon-container div:after {
+    content: "";
+    height: 0;
+    width: 0;
+    display: block;
+    position: absolute;
+    bottom: -15px;
+    right: 0;
+    border-top: 15px solid #bb7100;
+    border-right: 15px solid transparent;
+}
+
+.container-bod-starting {
+    font-family: inherit;
+    bottom: 10px;
+    right: 7px;
+    position: inherit;
+    font-size: 12px;
+    font-weight: 100;
+}
+
+.container-bod-cruise-price-ribbon {
+    font-size: 39px;
+    display: flex;
+    flex-direction: column;
+    font-weight: 900;
+    line-height: .9;
+}
