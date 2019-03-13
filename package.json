@@ -1,0 +1,30 @@
+{
+    "name": "cruisetest",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "dependencies": {
+        "backbone": "^1.4.0",
+        "handlebars": "^4.1.0",
+        "handlebars-loader": "^1.7.1",
+        "jquery": "^3.3.1",
+        "sass": "^1.17.2",
+        "webpack": "^4.29.6",
+        "webpack-cli": "^3.2.3",
+        "webpack-dev-server": "^3.2.1"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/anikaabreu/brTest.git"
+    },
+    "author": "Anika Abreu",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/anikaabreu/brTest/issues"
+    },
+    "homepage": "https://github.com/anikaabreu/brTest#readme"
+}
